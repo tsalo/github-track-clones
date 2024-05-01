@@ -1,7 +1,5 @@
 """Create a dashboard showing clone statistics over time."""
 
-from datetime import datetime as dt, timedelta, date
-
 import pandas as pd
 from bokeh.layouts import row, column, Spacer
 from bokeh.models import ColumnDataSource, DatetimeTickFormatter, Select, CustomJS

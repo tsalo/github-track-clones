@@ -21,11 +21,11 @@ jobs:
           pip3 install PyGithub
           python -m pip install --upgrade pip pandas
           pip install bokeh
-      - name: Run create-graph.py
-        run: python create-graph.py
+      - name: Run create_graph.py
+        run: python create_graph.py
       - name: Commit changes
         run: |
-          git config --global user.name 'j0ycehe'
+          git config --global user.name 'tsalo'
           git config --global user.email ${{ secrets.EMAIL }}
           git add -A
           git commit -am "Update dashboard"

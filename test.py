@@ -1,3 +1,5 @@
+"""Test the workflow."""
+
 from github import Github
 import os
 import argparse
