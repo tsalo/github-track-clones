@@ -1,5 +1,5 @@
 name: Track Clones
-on: 
+on:
   schedule:
       # Run this once per day, towards the end of the day for keeping the most
       # recent data point most meaningful (hours are interpreted in UTC).
@@ -8,12 +8,12 @@ on:
 permissions:
   contents: write
 jobs:
-  track_clones: 
-    strategy: 
+  track_clones:
+    strategy:
       matrix:
         repo: [j0ycehe/artoftheweb, j0ycehe/j0ycehe.github.io]
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v3
       - name: Set up Python version
         uses: actions/setup-python@v4
@@ -26,7 +26,7 @@ jobs:
       - name: Pull any download-stats changes
         run: git pull
       - name: Run fetch.py
-        env: 
+        env:
           SECRET_TOKEN: ${{ secrets.SECRET_TOKEN }}
         run: python fetch.py ${{ matrix.repo }}
       - name: Commit download statistics
@@ -39,4 +39,3 @@ jobs:
         run: |
           git pull --rebase
           git push
-

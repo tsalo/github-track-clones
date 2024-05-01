@@ -1,5 +1,5 @@
 name: Update Dashboard
-on: 
+on:
   schedule:
       # Run this once per day, towards the end of the day for keeping the most
       # recent data point most meaningful (hours are interpreted in UTC).
@@ -8,9 +8,9 @@ on:
 permissions:
   contents: write
 jobs:
-  update_dashboard: 
+  update_dashboard:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v3
       - name: Set up Python version
         uses: actions/setup-python@v4
@@ -31,5 +31,3 @@ jobs:
           git commit -am "Update dashboard"
       - name: Push changes
         run: git push
-
-

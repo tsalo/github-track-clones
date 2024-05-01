@@ -5,14 +5,15 @@ import argparse
 
 def main():
     args = parse_args()
-    owner_name, repo_name = args.repo.split("/")
+    # owner_name, repo_name = args.repo.split("/")
     token = os.environ.get("SECRET_TOKEN")
     g = Github(token)
     repo = g.get_repo(args.repo)
 
     clones = repo.get_clones_traffic()
-    
+
     print(clones["clones"])
+
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -20,11 +21,15 @@ def parse_args():
     parser.add_argument(
         "repo",
         metavar="REPOSITORY",
-        help="Owner and repository. Must contain a slash. "
-        "Example: owner/repository"
+        help=(
+            "Owner and repository. Must contain a slash. "
+            "Example: owner/repository"
+        ),
     )
 
     args = parser.parse_args()
     return args
 
-main()
+
+if __name__ == "__main__":
+    main()
